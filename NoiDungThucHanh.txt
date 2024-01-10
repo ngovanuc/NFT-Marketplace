@@ -1,0 +1,98 @@
+Buổi 1: NFT Marketplace
+
+Mục tiêu:
+    - tạo và chạy một dự án NFT marketplace được dựng sẵn
+    - thực hiện thay đổi cấu hình dự án để phù hợp với phiên bản web3
+
+Phân công nhiệm vụ:
+    - code: Ngô Văn Úc
+    - quay video thực hành: Ngô Văn Úc
+
+Các nội dung thực hành trong video buổi 1:
+    1. Cài đặt dự án truffle
+    2. Chạy dự án truffle
+    3. Thay đổi cấu hình dự án truffle với web3 phiên bản 4.x
+
+--------------------
+
+1. Cài đặt dự án truffle
+    - tạo một thư mục NFT marketplace với tên: Buoi1_NFT_Marketplace
+    - cài đặt truffle: npm install -g truffle
+    - unbox: truffle unbox react
+    - chuyển vào thư mục truffle bên trong Buoi1_NFT_Marketplace và chạy: npm i
+    lệnh này cài đặt các gói npm (node package manager) được liệt kê trong package.json
+    - mở ganache
+    - trong file truffle-config.js chứa các thông tin cấu hình dự án. tắt comment cho
+    development và điều chỉnh cổng port: 7545, network_id: 5777
+    * thư mục contracts chứa các hợp động thông mình mà chúng ta sẽ viết ra
+    * thư mục migration chứa các mã chỉ dẫn để triển khai hợp đồng
+    * thư mục test chứa đoạn mã kiểm thử hợp đồng trước khi triển khai chúng
+    // trình tự tiếp theo:
+    + code hợp đồng thông mình
+    + chạy compile
+    + viết test
+    + chạy test
+    + viết những chỉ dẫn để triển khai hợp đồng
+    + cuối cùng là triển khai hợp đồng
+
+2. Chạy dự án truffle
+    - trỏ tới thư mục truffle và chạy compile: truffle compile
+    - chạy tiếp lệnh: truffle test
+    - chạy: truffle migrate
+    * sau khi triển khai, chúng ta sẽ có được địa chỉ hợp đồng, nó được lưu trữ
+    trong thư mục mà chúng ta cấu hình từ trước (kiểm tra trong truffle-config.js để xem)
+    cụ thể là đoạn: contracts_build_directory:....
+    // tạo terminal mới và trỏ tới thư mục client trong dự án Buoi1_NFT_Marketplace
+    - trỏ tới thư mục client và chạy: npm i
+    - chạy: npm start
+    * khi chạy dự án cần lưu ý 3 điều sau:
+        + chọn đúng acc
+        + acc phải kết nối với web đó
+        + chọn đúng network
+    * cách thêm network cho ví MetaMask (Ganache)
+        + mở Ganache
+        + chọn thêm mạng trong ví metamask
+        + Network name: Ganache
+        + New RPC URL: (là địa chỉ trong ganache)
+        + Chain ID: 1337
+        + currency là: ETH
+        + save
+    * import một tài khoản (account) từ ganache vào ví metamask sử dụng mạng ganache
+        + trong ganache, chọn một tài khoản bất kì và copy khóa
+        + trên ví metamask chọn import account, dán khóa vừa sao chép và save
+    // lưu ý, trong toàn bộ quá trình này cần chạy trong một terminal thứ 3:
+    lệnh chạy như sau: ganache
+    * với SimpleStorage Contracts được mở trong local host, đây là một smart contract đơn giản
+    với tên là SimpleStorage. Hàm read() trả về giá trị biến value, hàm write() để thay
+    đổi dữ liệu và gán cho biến value.
+
+=> cơ bản đến đây là đã chạy xong dự án theo mẫu có sẵn, bây giờ chúng ta thực hiện
+cập nhật cấu hình web3 cho dự án (cập nhật web3 lên thành phiên bản 4.1)
+
+3. Thay đổi cấu hình dự án truffle với web3 phiên bản 4.x
+    - trong thư mục client tìm tới file package.json và xóa dòng này: "web3": "^1.8.2"
+    sau đó xóa đi
+    - trỏ tới client và chạy câu lệnh sau: npm i web3
+    - sau khi chạy xong thì vào lại package.json và kiểm tra
+    - tiếp theo là thiết lập biến môi trường, tạo một file file với tên '.env' trong thư mục client
+    và viết thiết lập cho biến môi trường
+    // ban đầu cài đặt truffle là tổng quát, truffle khuyên chúng ta nên xóa đi những gì không cần thiết
+    và thiết lập lại theo đúng nhu cầu sử dụng
+    - tìm đến webpacke.config.js và chỉnh sửa: thêm hằng Dotenv...
+    - trong terminal (trỏ tới client): npm i -D dotenv-webpack
+    - vào file App.jsx và xóa đi một số chỗ không cần thiết
+    - vào src/components/Demo/index.jsx và chỉnh sửa một vài chỗ cần thiết
+    - xóa luôn file: NoticeNoArtifact.jsx và NoticeWrongNetwork.jsx
+    - xóa file: Cta.jsx và Desc.jsx, title.jsx,
+    - tạo file mới trong thư mục components: index.js
+    - xóa luôn thư mục Intro
+    - xóa thêm Footer.jsx
+    - xóa Setup.jsx
+    - tạo file mới trong thư mục contexts: index.js
+    -
+
+
+
+
+
+
